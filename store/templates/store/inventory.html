@@ -1,0 +1,53 @@
+{% extends 'store/base.html' %}
+
+{% block title %}Inventory{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid bg-success text-light py-1 text-center">
+    <h1>Inventory</h1>
+</div>
+
+<div class="container text-center py-4" style="margin: auto;">
+    <form action="" method="GET" >
+        {{ myFilter.form }}
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+</div>
+
+<div class="container row text-center py-4" style="margin: auto;">
+    <div class="col-md-12">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <th>ID</th>
+                <th>Company Name</th>
+                <th>Medicine Name</th>
+                <th>Mfg Date</th>
+                <th>Exp Date</th>
+                <th>Price (in Rs)</th>
+                <th>Stock</th>
+                <th>Sell Medicine</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                {% for i in messages %}
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.company_name}}</td>
+                        <td>{{i.medicine_name}}</td>
+                        <td>{{i.mfg_date}}</td>
+                        <td>{{i.exp_date}}</td>
+                        <td>{{i.price}}</td>
+                        <td>{{i.stock}}</td>
+                        <td><a href="{% url 'SellMedicine' i.id %}" class="btn btn-primary">Sell</a></td>
+                        <td><a href="{% url 'UpdateMed' i.id %}" class="btn btn-warning">Update</a></td>
+                        <td><a href="{% url 'DeleteMed' i.id %}" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

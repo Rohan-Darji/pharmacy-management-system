@@ -1,0 +1,22 @@
+{% extends 'store/base.html' %}
+
+{% block title %}Sell Medicine{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid bg-success text-light py-1 text-center">
+    <h1>Sell Medicine</h1>
+</div>
+
+<div class="container1 my-4 mx-150" style="max-width: 900px; margin: auto;">
+    {% load crispy_forms_tags %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" class="btn btn-success my-2" value="Sell Medicine">
+        <a href="{% url 'Inventory' %}" class="btn btn-primary">Back</a>
+    </form>
+</div>
+
+{% endblock %}
